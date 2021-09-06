@@ -20,7 +20,7 @@ def speak(word):
 def show_list():
     global lbx
 
-    lbx.delete("0")
+    lbx.delete("0", tk.END)
     elenco = os.listdir("audio")
     elenco.sort(reverse=False)
     for file in elenco:
