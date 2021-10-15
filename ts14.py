@@ -6,6 +6,9 @@ from pygame import mixer
 import tkinter.ttk as ttk
 from time import sleep
 
+if "audio" not in os.listdir():
+    os.mkdir("audio")
+
 def speak(word):
     print("looking for word in dictionary")
     # print(os.listdir("audio/"))
