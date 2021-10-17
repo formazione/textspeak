@@ -84,7 +84,7 @@ def start():
     root = tk.Tk()
     root.title("Type to hear the pc reading the text when press space")
     root.geometry("600x400+200+400")
-    
+    root.config(bg="coral")
     # text widget where you write
     lbx = tk.Listbox(
         root,
@@ -99,21 +99,24 @@ def start():
     lbx.config(yscrollcommand=scrollbar.set)
     show_list()
 
-    lab = tk.Label(root, text="Write a full sentence and press return")
+    lab = tk.Label(root, text="Write a full sentence and press return", bg="coral")
     lab.pack(fill="x")
 
-    e = tk.Entry(root)
-    e.pack(fill="x", expand=True)
+    e = tk.Entry(root, bg="black", fg="white",
+        insertbackground="white")
+    e.pack(fill="both", expand=True)
     e.bind("<Return>", lambda evt: save_text(e.get()))
     
-    lab = tk.Label(root, text="When you press space an mp3 is generated in the folder audio")
+    lab = tk.Label(root, text="When you press space an mp3 is generated in the folder audio",
+      bg="coral")
     lab.pack()
 
-    text = tk.Text(root, height=15)
+    text = tk.Text(root, height=15, bg="black", fg="white",
+        insertbackground="white")
     text.pack()
 
     button = tk.Button(root, text="Apri cartella con i file audio / open audio folder",
-        command=openfile)
+        command=openfile, bg="black", fg="white",)
     button.pack()
 
     text.focus()
