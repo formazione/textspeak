@@ -99,20 +99,32 @@ def start():
     lbx.config(yscrollcommand=scrollbar.set)
     show_list()
 
-    lab = tk.Label(root, text="write and press return").pack()
-    e = tk.Entry(root)
-    e.pack()
-    e.bind("<Return>", lambda evt: save_text(e.get()))
+    lab = tk.Label(root, text="Write a full sentence and press return")
+    lab.pack(fill="x")
 
-    text = tk.Text(root)
+    e = tk.Entry(root)
+    e.pack(fill="x", expand=True)
+    e.bind("<Return>", lambda evt: save_text(e.get()))
+    
+    lab = tk.Label(root, text="When you press space an mp3 is generated in the folder audio")
+    lab.pack()
+
+    text = tk.Text(root, height=15)
     text.pack()
 
+    button = tk.Button(root, text="Apri cartella con i file audio / open audio folder",
+        command=openfile)
+    button.pack()
 
     text.focus()
     text.bind("<Key>", audiokey)
     text.bind("<BackSpace>", indietro)
     # text.bind("<Return>", _return)
     root.mainloop()
+
+
+def openfile():
+    os.system("start audio\\")
 
 def save_text(text):
     speak(text)
